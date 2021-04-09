@@ -5,6 +5,8 @@ import java.util.Stack;
 
 /**
  * @author victorcheng Created: 2020/2/17 15:40
+ * 有效括号序列
+ * https://leetcode-cn.com/problems/valid-parentheses/
  */
 class Solution {
 
