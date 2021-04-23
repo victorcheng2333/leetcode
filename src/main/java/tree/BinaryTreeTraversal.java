@@ -1,30 +1,39 @@
 package tree;
 
-import org.javatuples.Pair;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
+/**
+ * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/yan-se-biao-ji-fa-yi-chong-tong-yong-qie-jian-ming/
+ */
 public class BinaryTreeTraversal {
+    class ColorNode {
+        TreeNode node;
+        Integer color;
+
+        public ColorNode(TreeNode node,Integer color){
+            this.node = node;
+            this.color = color;
+        }
+    }
     public List<Integer> inorderTraversal(TreeNode root) {
-        var result = new ArrayList<Integer>();
-        final var WHITE = 0;
-        final var GRAY = 1;
-        var stack = new LinkedList<Pair<Integer, TreeNode>>();
-        stack.push(Pair.with(WHITE, root));
-        while (!stack.isEmpty()) {
-            var pair = stack.pop();
-            var color = pair.getValue0();
-            var node = pair.getValue1();
-            if (node == null) continue;
-            if (color == WHITE) {
-                stack.add(Pair.with(WHITE, node.right));
-                stack.add(Pair.with(GRAY, node));
-                stack.add(Pair.with(WHITE, node.left));
-            } else {
-                result.add(node.val);
+        if(root == null) return new ArrayList<Integer>();
+        final Integer WHITE = 0;
+        final Integer GRAY = 1;
+        List<Integer> res = new ArrayList<>();
+        Stack<ColorNode> stack = new Stack<>();
+        stack.push(new ColorNode(root,WHITE));
+        while(!stack.empty()){
+            ColorNode cn = stack.pop();
+            if(cn.color.equals(WHITE)){
+                if(cn.node.right != null) stack.push(new ColorNode(cn.node.right,WHITE));
+                stack.push(new ColorNode(cn.node, GRAY));
+                if(cn.node.left != null)stack.push(new ColorNode(cn.node.left,WHITE));
+            }else{
+                res.add(cn.node.val);
             }
         }
-        return result;
+        return res;
     }
 }
