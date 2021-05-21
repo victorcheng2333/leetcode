@@ -6,7 +6,7 @@ import java.util.List;
  * https://leetcode-cn.com/problems/permutations/
  * 数组全排列 - 回溯问题
  */
-public class permute {
+public class Permute {
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null || nums.length == 0) return new ArrayList<>();
         List<List<Integer>> result = new ArrayList<>();
