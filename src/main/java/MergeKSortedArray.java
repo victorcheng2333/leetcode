@@ -2,6 +2,18 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.stream.IntStream;
 
+/**
+ * Given a List of integer array consisted of positive integers. Please implement a function that combines all the input
+ * into a single sorted output.
+ * E.g.
+ *      input = {[1,1,2,5,7,8],
+ *               [3,5,9,12],
+ *               [1],
+ *               [4,4,4,4,7]}
+ *
+ *      output: [1,1,1,2,3,4,4,4,4,5,5,7,7,8,9,12]
+ *
+ */
 public class MergeKSortedArray {
     static int[][] testInput1 = new int[][]
             {{1,1,2,5,7,8},
